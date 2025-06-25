@@ -1,0 +1,32 @@
+[
+  {
+    "name": "John Doe",
+    "email": "johndoe@example.com",
+    "photoUrl": "https://randomuser.me/api/portraits/men/1.jpg",
+    "password": "SecurePass123!"
+  },
+  {
+    "name": "Emily Smith",
+    "email": "emilysmith@example.com",
+    "photoUrl": "https://randomuser.me/api/portraits/women/2.jpg",
+    "password": "EmilySecure456!"
+  },
+  {
+    "name": "Michael Johnson",
+    "email": "michaeljohnson@example.com",
+    "photoUrl": "https://randomuser.me/api/portraits/men/3.jpg",
+    "password": "MikePass789!"
+  },
+  {
+    "name": "Sophia Williams",
+    "email": "sophiawilliams@example.com",
+    "photoUrl": "https://randomuser.me/api/portraits/women/4.jpg",
+    "password": "SophiaSafe321!"
+  },
+  {
+    "name": "David Brown",
+    "email": "davidbrown@example.com",
+    "photoUrl": "https://randomuser.me/api/portraits/men/5.jpg",
+    "password": "DavidStrong654!"
+  }
+]
