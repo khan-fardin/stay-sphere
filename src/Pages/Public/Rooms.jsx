@@ -42,7 +42,7 @@ const Rooms = () => {
                 </select>
             </label>
 
-            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 my-10 gap-5'>{
+            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 my-10 gap-5'>{
                 rooms.map(room => <Link to={`room-details/${room._id}`} key={room._id}>
                     <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 1.0 }} className='p-3 bg-accent-content rounded-2xl w-fit mx-auto'>
                         <img src={room.images} alt="" className='rounded-lg w-[300px] h-[200px]' />
@@ -64,7 +64,7 @@ const Rooms = () => {
                                 }
                             </p>
 
-                            <h1 className='text-xl font-medium'>{room.name}</h1>
+                            <h1 className='text-xl font-medium h-[50px]'>{room.name}</h1>
                             <p className='flex items-center gap-2 font-medium opacity-50'><FaBed className='text-red-500' />{room.bedType}</p>
                             <div>
                                 <div className='border-b border-dashed'></div>
