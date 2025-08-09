@@ -11,7 +11,9 @@ const Navbar = () => {
     const handleLogout = () => {
         logOutUser()
             .then(() => {
-                toast("You Logged Out successfully");
+                toast("You Logged Out successfully", {
+                    position: "bottom-center"
+                });
             })
             .catch((error) => {
                 // console.log(error);
@@ -21,7 +23,9 @@ const Navbar = () => {
     const links = <>
         <li><NavLink to='/' className={({ isActive }) => isActive ? "text-white px-3 py-2 rounded-md bg-accent font-medium" : "text-gray-400 hover:text-white px-3 py-2 rounded-md transition-all duration-300 font-medium"}>Home</NavLink></li>
         <li><NavLink to='/rooms' className={({ isActive }) => isActive ? "text-white px-3 py-2 rounded-md bg-accent font-medium" : "text-gray-400 hover:text-white px-3 py-2 rounded-md transition-all duration-300 font-medium"}>Rooms</NavLink></li>
-        <li><NavLink to='/my-bookings' className={({ isActive }) => isActive ? "text-white px-3 py-2 rounded-md bg-accent font-medium" : "text-gray-400 hover:text-white px-3 py-2 rounded-md transition-all duration-300 font-medium"}>My Bookings</NavLink></li>
+        {user && <li><NavLink to='/my-bookings' className={({ isActive }) => isActive ? "text-white px-3 py-2 rounded-md bg-accent font-medium" : "text-gray-400 hover:text-white px-3 py-2 rounded-md transition-all duration-300 font-medium"}>My Bookings</NavLink></li>}
+        <li><NavLink to='/about-us' className={({ isActive }) => isActive ? "text-white px-3 py-2 rounded-md bg-accent font-medium" : "text-gray-400 hover:text-white px-3 py-2 rounded-md transition-all duration-300 font-medium"}>About Us</NavLink></li>
+        <li><NavLink to='/contact' className={({ isActive }) => isActive ? "text-white px-3 py-2 rounded-md bg-accent font-medium" : "text-gray-400 hover:text-white px-3 py-2 rounded-md transition-all duration-300 font-medium"}>Contact</NavLink></li>
     </>
 
     return (
@@ -46,8 +50,6 @@ const Navbar = () => {
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1">
                         {links}
-                        <li><NavLink to='/about-us' className={({ isActive }) => isActive ? "text-white px-3 py-2 rounded-md bg-accent font-medium" : "text-gray-400 hover:text-white px-3 py-2 rounded-md transition-all duration-300 font-medium"}>About Us</NavLink></li>
-                        <li><NavLink to='/contact' className={({ isActive }) => isActive ? "text-white px-3 py-2 rounded-md bg-accent font-medium" : "text-gray-400 hover:text-white px-3 py-2 rounded-md transition-all duration-300 font-medium"}>Contact</NavLink></li>
                     </ul>
                 </div>
                 <div className="navbar-end space-x-2">

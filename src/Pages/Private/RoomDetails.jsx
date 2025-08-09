@@ -10,7 +10,7 @@ import { Suspense, use, useEffect, useState } from "react";
 import { FaCity, FaMountain, FaPeopleRoof } from "react-icons/fa6";
 import { IoMdResize } from "react-icons/io";
 import { BiFridge } from "react-icons/bi";
-import { useLoaderData, useNavigate, useParams } from "react-router";
+import { useNavigate, useParams } from "react-router";
 import { Helmet } from "react-helmet";
 import { Bounce, toast } from "react-toastify";
 import { AuthContext } from "../../Provider/AuthProvider";
@@ -27,17 +27,13 @@ const RoomDetails = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        fetch(`https://stay-sphere-server-ashen.vercel.app/rooms/${id}`, {
-            headers: {
-                Authorization: `Bearer ${user?.accessToken}`,
-            },
-        }).then(res => res.json()).then(data => setRoom(data));
-    }, [id, user]);
+        fetch(`https://stay-sphere-server-ashen.vercel.app/rooms/${id}`).then(res => res.json()).then(data => setRoom(data));
+    }, [id]);
 
     if (!room) return <Loading />;
 
     const disabledDates = room.bookingDetails.map(d => d.bookingDate);
-    const roomBookEmail = room.bookingDetails.find(d => d.email === user.email);
+    const roomBookEmail = room.bookingDetails?.find(d => d?.email === user?.email);
     const reviews = room.bookingDetails?.filter(r => r.rating !== undefined) || [];
     const averageRating = reviews.length ? reviews.reduce((sum, r) => sum + r.rating, 0) / reviews.length : 0;
     const dates = [];

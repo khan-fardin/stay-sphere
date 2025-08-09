@@ -9,6 +9,8 @@ import MyBookings from "../Pages/Private/MyBookings";
 import RoomDetails from "../Pages/Private/RoomDetails";
 import Loading from "../Pages/Public/Loading";
 import PrivateRoutes from "../Provider/PrivateRoutes";
+import About from "../Pages/Public/About";
+import Contact from "../Pages/Public/Contact";
 
 export const router = createBrowserRouter(
     [
@@ -21,14 +23,6 @@ export const router = createBrowserRouter(
                     index: true,
                     path: '/',
                     Component: Home,
-                },
-                {
-                    path: '/registration',
-                    Component: Registration,
-                },
-                {
-                    path: '/login',
-                    Component: Login,
                 },
                 {
                     loader: () => fetch("https://stay-sphere-server-ashen.vercel.app/rooms"),
@@ -44,7 +38,23 @@ export const router = createBrowserRouter(
                     path: 'rooms/room-details/:id',
                     element: <RoomDetails />,
                 },
+                {
+                    path: '/about-us',
+                    Component: About,
+                },
+                {
+                    path: '/contact',
+                    Component: Contact,
+                },
             ],
+        },
+        {
+            path: '/registration',
+            Component: Registration,
+        },
+        {
+            path: '/login',
+            Component: Login,
         },
     ]
 );
