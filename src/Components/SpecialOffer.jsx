@@ -15,7 +15,7 @@ const SpecialOffer = () => {
   if (!show) return null;
 
   return (
-    <div className="fixed inset-0 bg-transparent bg-opacity-10 z-50 flex items-center justify-center p-4">
+    <div className="fixed inset-0 bg-transparent bg-opacity-10 z-500 flex items-center justify-center p-4">
       <div className="bg-white rounded-2xl max-w-md w-full shadow-2xl relative animate-fade-in-up">
         <button
           onClick={() => setShow(false)}

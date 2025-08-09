@@ -38,16 +38,11 @@ export const router = createBrowserRouter(
                 },
                 {
                     path: '/my-bookings',
-                    element: <PrivateRoutes>
-                        <MyBookings />
-                    </PrivateRoutes>,
+                    element: <MyBookings />,
                 },
                 {
                     path: 'rooms/room-details/:id',
-                    element:
-                        <PrivateRoutes>
-                            <RoomDetails />
-                        </PrivateRoutes>,
+                    element: <RoomDetails />,
                 },
             ],
         },

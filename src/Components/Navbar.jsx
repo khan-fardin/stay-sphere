@@ -25,7 +25,7 @@ const Navbar = () => {
     </>
 
     return (
-        <div className='sticky top-0 z-50'>
+        <div className='sticky top-0 z-50000'>
             <div className="navbar bg-base-100">
                 <div className="navbar-start">
                     <div className="dropdown">
@@ -46,6 +46,8 @@ const Navbar = () => {
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1">
                         {links}
+                        <li><NavLink to='/about-us' className={({ isActive }) => isActive ? "text-white px-3 py-2 rounded-md bg-accent font-medium" : "text-gray-400 hover:text-white px-3 py-2 rounded-md transition-all duration-300 font-medium"}>About Us</NavLink></li>
+                        <li><NavLink to='/contact' className={({ isActive }) => isActive ? "text-white px-3 py-2 rounded-md bg-accent font-medium" : "text-gray-400 hover:text-white px-3 py-2 rounded-md transition-all duration-300 font-medium"}>Contact</NavLink></li>
                     </ul>
                 </div>
                 <div className="navbar-end space-x-2">

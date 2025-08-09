@@ -6,23 +6,32 @@ import { FaLocationDot } from 'react-icons/fa6';
 import { MdLocalBar } from 'react-icons/md';
 import { motion } from "motion/react"
 import { Link, useLoaderData } from 'react-router';
+import Loading from './Loading';
 
 const Rooms = () => {
 
     const data = useLoaderData();
 
-    const [rooms, setRooms] = useState(data); 
+    const [rooms, setRooms] = useState(data);
     const [sort, setSort] = useState("default");
+    const [loading, setLoading] = useState(false);
 
     useEffect(() => {
+        setLoading(true)
         let sortedRooms = [...data];
-        if (sort === "high") {
-            sortedRooms.sort((a, b) => b.pricePerNight - a.pricePerNight);
-        } else if (sort === "low") {
-            sortedRooms.sort((a, b) => a.pricePerNight - b.pricePerNight);
-        }
-        setRooms(sortedRooms);
+
+        setTimeout(() => {
+            if (sort === "high") {
+                sortedRooms.sort((a, b) => b.pricePerNight - a.pricePerNight);
+            } else if (sort === "low") {
+                sortedRooms.sort((a, b) => a.pricePerNight - b.pricePerNight);
+            }
+            setRooms(sortedRooms);
+            setLoading(false); // stop loading
+        }, 300);
     }, [sort, data]);
+
+    if(loading==true)return <Loading/>
 
     return (
         <div>
