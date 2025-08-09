@@ -31,7 +31,7 @@ const Rooms = () => {
         }, 300);
     }, [sort, data]);
 
-    if(loading==true)return <Loading/>
+    // if(loading)return <Loading/>
 
     return (
         <div>
@@ -51,38 +51,42 @@ const Rooms = () => {
                 </select>
             </label>
 
-            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 my-10 gap-5'>{
-                rooms.map(room => <Link to={`room-details/${room._id}`} key={room._id}>
-                    <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 1.0 }} className='p-3 bg-accent-content rounded-2xl w-fit mx-auto'>
-                        <img src={room.images} alt="" className='rounded-lg w-[300px] h-[200px]' />
-                        <div className='py-3 space-y-2.5'>
-                            <p className='flex items-center gap-2 text-lg font-medium'>
-                                <FaStar className='text-orange-400' />
-                                {
-                                    (() => {
-                                        const reviews = room.bookingDetails?.filter(r => r.rating !== undefined) || [];
-                                        const avg = reviews.length
-                                            ? (reviews.reduce((sum, r) => sum + r.rating, 0) / reviews.length).toFixed(1)
-                                            : 0;
-                                        return (
-                                            <>
-                                                {avg} <span className='opacity-50'>({reviews.length} Reviews)</span>
-                                            </>
-                                        );
-                                    })()
-                                }
-                            </p>
+            {loading ? (
+                <Loading />
+            ) : (
+                <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 my-10 gap-5'>{
+                    rooms.map(room => <Link to={`room-details/${room._id}`} key={room._id}>
+                        <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 1.0 }} className='p-3 bg-accent-content rounded-2xl w-fit mx-auto'>
+                            <img src={room.images} alt="" className='rounded-lg w-[300px] h-[200px]' />
+                            <div className='py-3 space-y-2.5'>
+                                <p className='flex items-center gap-2 text-lg font-medium'>
+                                    <FaStar className='text-orange-400' />
+                                    {
+                                        (() => {
+                                            const reviews = room.bookingDetails?.filter(r => r.rating !== undefined) || [];
+                                            const avg = reviews.length
+                                                ? (reviews.reduce((sum, r) => sum + r.rating, 0) / reviews.length).toFixed(1)
+                                                : 0;
+                                            return (
+                                                <>
+                                                    {avg} <span className='opacity-50'>({reviews.length} Reviews)</span>
+                                                </>
+                                            );
+                                        })()
+                                    }
+                                </p>
 
-                            <h1 className='text-xl font-medium h-[50px]'>{room.name}</h1>
-                            <p className='flex items-center gap-2 font-medium opacity-50'><FaBed className='text-red-500' />{room.bedType}</p>
-                            <div>
-                                <div className='border-b border-dashed'></div>
-                                <div className='border-b border-dashed'></div>
+                                <h1 className='text-xl font-medium h-[50px]'>{room.name}</h1>
+                                <p className='flex items-center gap-2 font-medium opacity-50'><FaBed className='text-red-500' />{room.bedType}</p>
+                                <div>
+                                    <div className='border-b border-dashed'></div>
+                                    <div className='border-b border-dashed'></div>
+                                </div>
+                                <h1 className='font-bold text-2xl'>{room.pricePerNight}$<span className='opacity-50 text-xl'>/night</span></h1>
                             </div>
-                            <h1 className='font-bold text-2xl'>{room.pricePerNight}$<span className='opacity-50 text-xl'>/night</span></h1>
-                        </div>
-                    </motion.div></Link>)}
-            </div>
+                        </motion.div></Link>)}
+                </div>
+            )}
         </div>
     );
 };

@@ -26,7 +26,7 @@ export const router = createBrowserRouter(
                 },
                 {
                     loader: () => fetch("https://stay-sphere-server-ashen.vercel.app/rooms"),
-                    hydrateFallbackElement: <Loading />,
+                    // hydrateFallbackElement: <Loading />,
                     path: '/rooms',
                     Component: Rooms,
                 },
